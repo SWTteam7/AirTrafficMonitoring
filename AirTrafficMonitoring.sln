@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitoring", "Air
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafMoni.Test.Unit", "AirTrafMoni.Test.Unit\AirTrafMoni.Test.Unit.csproj", "{CAA23906-E1ED-4DD2-83DC-C229FD806450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAfDLL", "TestAfDLL\TestAfDLL.csproj", "{609378CC-1F1D-466F-B18A-8CB1CB1C0E4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "TestAfDLL\Application.csproj", "{609378CC-1F1D-466F-B18A-8CB1CB1C0E4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

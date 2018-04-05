@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirTrafficMonitoring;
 using TransponderReceiver;
 
-namespace TestAfDLL
+namespace Application
 {
    class Program
    {
       static void Main(string[] args)
       {
-         var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+         ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
+         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr);
+         TOS.readfromDLL();
+         //TOS.Print();
 
-         receiver.TransponderDataReady += Receiver_TransponderDataReady;
-
-         
+         Console.ReadKey();
       }
 
-      private static void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
-      {
-         var list = e.TransponderData;
-
-         foreach (var track in list)
-         {
-            Console.WriteLine(track);
-         }
-      }
+      
    }
 }

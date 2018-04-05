@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring
 {
-   class Track
+   public class Track
    {
-      private string Tag { get; set; }
-      private int XCoor { get; set; }
-      private int YCoor { get; set; }
-      private int Altitude { get; set; }
-      private int Timestamp { get; set; }
+      public string Tag { get; set; }
+      public int XCoor { get; set; }
+      public int YCoor { get; set; }
+      public int Altitude { get; set; }
+      public Timestamp Timestamp { get; set; }
+
+      public void PrintData()
+      {
+         string timeprint = Timestamp.printTime();
+         Console.WriteLine("Tag: "+Tag+"\nX-coordinate: "+XCoor+"meters\nY-coordinate: "+YCoor+"meters\nAltitude: " +Altitude+"meters\nTime stamp: "+timeprint+"\n");
+      }
    }
 }
