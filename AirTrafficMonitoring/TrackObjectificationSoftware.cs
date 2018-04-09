@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
@@ -9,20 +10,22 @@ namespace AirTrafficMonitoring
 {
     public class TrackObjectificationSoftware
     {
+       private static IWriter _writer;
 
-       public TrackObjectificationSoftware(ITransponderReceiver itr)
+       public TrackObjectificationSoftware(ITransponderReceiver itr, IWriter writer)
        {
          itr.TransponderDataReady += Receiver_TransponderDataReady;
+          _writer = writer;
        }
 
      
 
-      public void readfromDLL()
-       {
-          var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+      //public void readfromDLL()
+      // {
+      //    var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
-          receiver.TransponderDataReady += Receiver_TransponderDataReady;
-       }
+      //    receiver.TransponderDataReady += Receiver_TransponderDataReady;
+      // }
 
 
 
@@ -44,6 +47,7 @@ namespace AirTrafficMonitoring
             t.Altitude = Convert.ToInt32(_track[3]);
             string time = _track[4];
 
+
             Timestamp timestamp = new Timestamp();
             timestamp.Year = time.Substring(0, 4);
             timestamp.Month = time.Substring(4, 2);
@@ -59,7 +63,7 @@ namespace AirTrafficMonitoring
 
             foreach (var _t in Trackliste)
             {
-               _t.PrintData();
+               _writer.PrintTrack(t);
             }
          }
          

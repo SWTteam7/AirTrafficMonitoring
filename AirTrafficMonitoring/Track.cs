@@ -14,10 +14,10 @@ namespace AirTrafficMonitoring
       public int Altitude { get; set; }
       public Timestamp Timestamp { get; set; }
 
-      public void PrintData()
-      {
-         string timeprint = Timestamp.printTime();
-         Console.WriteLine("Tag: "+Tag+"\nX-coordinate: "+XCoor+"meters\nY-coordinate: "+YCoor+"meters\nAltitude: " +Altitude+"meters\nTime stamp: "+timeprint+"\n");
-      }
+      //public void PrintData()
+      //{
+      //   string timeprint = Timestamp.printTime();
+      //   Console.WriteLine("Tag: "+Tag+"\nX-coordinate: "+XCoor+"meters\nY-coordinate: "+YCoor+"meters\nAltitude: " +Altitude+"meters\nTime stamp: "+timeprint+"\n");
+      //}
    }
 }

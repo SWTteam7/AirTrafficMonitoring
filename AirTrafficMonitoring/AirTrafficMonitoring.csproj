@@ -43,6 +43,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="IWriter.cs" />
     <Compile Include="Timestamp.cs" />
     <Compile Include="Track.cs" />
     <Compile Include="TrackObjectificationSoftware.cs" />

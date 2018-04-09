@@ -13,9 +13,10 @@ namespace Application
       static void Main(string[] args)
       {
          ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
-         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr);
-         TOS.readfromDLL();
-         //TOS.Print();
+         IWriter writer = new ConsoleWriter();
+         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer);
+         
+         
 
          Console.ReadKey();
       }
