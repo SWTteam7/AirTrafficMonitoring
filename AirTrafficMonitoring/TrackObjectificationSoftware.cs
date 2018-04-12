@@ -65,10 +65,14 @@ namespace AirTrafficMonitoring
             {
                _writer.PrintTrack(t);
             }
+
+            CompareTracks(Trackliste);
          }
-         
        }
 
-       
+       private static void CompareTracks(List<Track> trackliste)
+       {
+          
+       }
     }
 }
