@@ -8,19 +8,17 @@ using TransponderReceiver;
 
 namespace Application
 {
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
-         IWriter writer = new ConsoleWriter();
-         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer);
-         
-         
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
+            IWriter writer = new ConsoleWriter();
+            TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer);
 
-         Console.ReadKey();
-      }
 
+            Console.ReadKey();
+        }
       
-   }
+    }
 }

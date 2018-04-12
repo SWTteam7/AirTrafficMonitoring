@@ -10,68 +10,62 @@ namespace AirTrafficMonitoring
 {
     public class TrackObjectificationSoftware
     {
-       private static IWriter _writer;
+        private static IWriter _writer;
 
-       public TrackObjectificationSoftware(ITransponderReceiver itr, IWriter writer)
-       {
-         itr.TransponderDataReady += Receiver_TransponderDataReady;
-          _writer = writer;
-       }
+        public TrackObjectificationSoftware(ITransponderReceiver itr, IWriter writer)
+        {
+            itr.TransponderDataReady += Receiver_TransponderDataReady;
+            _writer = writer;
+        }
 
-     
+        //public void readfromDLL()
+        //{
+        //    var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+        //    receiver.TransponderDataReady += Receiver_TransponderDataReady;
+        //}
 
-      //public void readfromDLL()
-      // {
-      //    var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+        private static void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
+        {
+            var list = e.TransponderData;
 
-      //    receiver.TransponderDataReady += Receiver_TransponderDataReady;
-      // }
-
-
-
-       private static void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
-       {
-         var list = e.TransponderData;
-          
-         foreach (var track in list)
-         {
-            List<Track> Trackliste = new List<Track>();
-            string[] _track;
-            _track= track.Split(';');
-
-            Track t = new Track();
-            
-            t.Tag = _track[0];
-            t.XCoor = Convert.ToInt32(_track[1]);
-            t.YCoor = Convert.ToInt32(_track[2]);
-            t.Altitude = Convert.ToInt32(_track[3]);
-            string time = _track[4];
-
-
-            Timestamp timestamp = new Timestamp();
-            timestamp.Year = time.Substring(0, 4);
-            timestamp.Month = time.Substring(4, 2);
-            timestamp.Day = time.Substring(6, 2);
-            timestamp.Hour = time.Substring(8, 2);
-            timestamp.Minute = time.Substring(10, 2);
-            timestamp.Second = time.Substring(12, 2);
-            timestamp.Milisecond = time.Substring(14, 3);
-
-            t.Timestamp = timestamp;
-            
-            Trackliste.Add(t);
-
-            foreach (var _t in Trackliste)
+            foreach (var track in list)
             {
-               _writer.PrintTrack(t);
+                List<Track> Trackliste = new List<Track>();
+                string[] _track;
+                _track = track.Split(';');
+
+                Track t = new Track();
+            
+                t.Tag = _track[0];
+                t.XCoor = Convert.ToInt32(_track[1]);
+                t.YCoor = Convert.ToInt32(_track[2]);
+                t.Altitude = Convert.ToInt32(_track[3]);
+                string time = _track[4];
+
+                Timestamp timestamp = new Timestamp();
+                timestamp.Year = time.Substring(0, 4);
+                timestamp.Month = time.Substring(4, 2);
+                timestamp.Day = time.Substring(6, 2);
+                timestamp.Hour = time.Substring(8, 2);
+                timestamp.Minute = time.Substring(10, 2);
+                timestamp.Second = time.Substring(12, 2);
+                timestamp.Milisecond = time.Substring(14, 3);
+
+                t.Timestamp = timestamp;
+            
+                Trackliste.Add(t);
+
+                foreach (var _t in Trackliste)
+                {
+                    _writer.PrintTrack(t);
+                }
+
+                CompareTracks(Trackliste);
             }
+        }
 
-            CompareTracks(Trackliste);
-         }
-       }
-
-       public static List<Track> CompareTracks(List<Track> trackliste)
-       {
+        public static List<Track> CompareTracks(List<Track> trackliste)
+        {
             List<Track> conflictingTracks = new List<Track>();
 
             int verticalDistance = 0;
@@ -79,10 +73,9 @@ namespace AirTrafficMonitoring
 
             foreach (var track in trackliste)
             {
-                track.Altitude
+                track.Altitude;
             }
             //kig på x og y for de forskellige fly og noget med pythagoras
-
 
 
             if (horisontalDistance<5000)
@@ -93,8 +86,7 @@ namespace AirTrafficMonitoring
                 }
             }
 
-
             return conflictingTracks;
-       }
+        }
     }
 }
