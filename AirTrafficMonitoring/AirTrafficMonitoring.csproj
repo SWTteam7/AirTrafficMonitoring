@@ -43,7 +43,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConflictingSubject.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="Detection.cs" />
+    <Compile Include="IConflictingObserver.cs" />
     <Compile Include="IWriter.cs" />
     <Compile Include="Timestamp.cs" />
     <Compile Include="Track.cs" />

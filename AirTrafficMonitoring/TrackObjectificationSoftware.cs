@@ -70,9 +70,31 @@ namespace AirTrafficMonitoring
          }
        }
 
-       private static void CompareTracks(List<Track> trackliste)
+       public static List<Track> CompareTracks(List<Track> trackliste)
        {
-          
+            List<Track> conflictingTracks = new List<Track>();
+
+            int verticalDistance = 0;
+            int horisontalDistance = 0;
+
+            foreach (var track in trackliste)
+            {
+                track.Altitude
+            }
+            //kig på x og y for de forskellige fly og noget med pythagoras
+
+
+
+            if (horisontalDistance<5000)
+            {
+                if (verticalDistance < 300)
+                {
+                    //returner de to fly
+                }
+            }
+
+
+            return conflictingTracks;
        }
     }
 }
