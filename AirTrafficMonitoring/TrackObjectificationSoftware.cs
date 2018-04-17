@@ -33,27 +33,26 @@ namespace AirTrafficMonitoring
             string[] _track;
             _track= track.Split(';');
 
-            Track t = new Track();
+                Track t = new Track();
             
-            t.Tag = _track[0];
-            t.XCoor = Convert.ToInt32(_track[1]);
-            t.YCoor = Convert.ToInt32(_track[2]);
-            t.Altitude = Convert.ToInt32(_track[3]);
-            string time = _track[4];
+                t.Tag = _track[0];
+                t.XCoor = Convert.ToInt32(_track[1]);
+                t.YCoor = Convert.ToInt32(_track[2]);
+                t.Altitude = Convert.ToInt32(_track[3]);
+                string time = _track[4];
 
+                Timestamp timestamp = new Timestamp();
+                timestamp.Year = time.Substring(0, 4);
+                timestamp.Month = time.Substring(4, 2);
+                timestamp.Day = time.Substring(6, 2);
+                timestamp.Hour = time.Substring(8, 2);
+                timestamp.Minute = time.Substring(10, 2);
+                timestamp.Second = time.Substring(12, 2);
+                timestamp.Milisecond = time.Substring(14, 3);
 
-            Timestamp timestamp = new Timestamp();
-            timestamp.Year = time.Substring(0, 4);
-            timestamp.Month = time.Substring(4, 2);
-            timestamp.Day = time.Substring(6, 2);
-            timestamp.Hour = time.Substring(8, 2);
-            timestamp.Minute = time.Substring(10, 2);
-            timestamp.Second = time.Substring(12, 2);
-            timestamp.Milisecond = time.Substring(14, 3);
-
-            t.Timestamp = timestamp;
+                t.Timestamp = timestamp;
             
-            Trackliste.Add(t);
+                Trackliste.Add(t);
 
             
                _writer.PrintTrack(t);

@@ -21,7 +21,7 @@ namespace AirTrafficMonitoring
 
         public static void Notify()
         {
-            foreach(var conflict in conflictlist)
+            foreach (var conflict in conflictlist)
             {
                 conflict.Update();
             }
