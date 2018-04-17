@@ -17,13 +17,15 @@ namespace AirTrafMoni.Test.Unit
       private TrackObjectificationSoftware _uut;
       private ITransponderReceiver TransponderReciever;
       private IWriter writer;
+      private Compare Compare;
 
       [SetUp]
       public void SetUp()
       {
          writer = Substitute.For<IWriter>();
          TransponderReciever= Substitute.For<ITransponderReceiver>();
-         _uut = new TrackObjectificationSoftware(TransponderReciever,writer);
+         Compare = Substitute.For<Compare>();
+         _uut = new TrackObjectificationSoftware(TransponderReciever,writer,Compare);
 
          var track = "ATR423;11111;22222;33333;20180409095330123";
          var trackliste = new List<string>();

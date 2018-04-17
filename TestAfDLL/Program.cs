@@ -14,12 +14,12 @@ namespace Application
       {
          ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
          IWriter writer = new ConsoleWriter();
-         //IDetection detection = new 
+         Compare com = new Compare();
          
 
-         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer);
+         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer,com);
 
-         Detection detection = new Detection(TOS);
+         Detection detection = new Detection(com);
 
          Console.ReadKey();
       }

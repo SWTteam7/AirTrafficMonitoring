@@ -43,14 +43,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConflictingSubject.cs" />
-    <Compile Include="ConsoleWriter.cs" />
-    <Compile Include="Detection.cs" />
-    <Compile Include="DetectionEventArgs.cs" />
-    <Compile Include="IConflictingObserver.cs" />
-    <Compile Include="IWriter.cs" />
-    <Compile Include="Timestamp.cs" />
-    <Compile Include="Track.cs" />
+    <Compile Include="Compare.cs" />
+    <Compile Include="Convertion.cs" />
+    <Compile Include="Observer\ConflictingSubject.cs" />
+    <Compile Include="Output\ConsoleWriter.cs" />
+    <Compile Include="Observer\Detection.cs" />
+    <Compile Include="Observer\IConflictingObserver.cs" />
+    <Compile Include="Output\IWriter.cs" />
+    <Compile Include="Track\Timestamp.cs" />
+    <Compile Include="Track\Track.cs" />
     <Compile Include="TrackObjectificationSoftware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
