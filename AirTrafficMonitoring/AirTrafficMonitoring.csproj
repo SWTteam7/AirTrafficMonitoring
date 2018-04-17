@@ -46,6 +46,7 @@
     <Compile Include="ConflictingSubject.cs" />
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="Detection.cs" />
+    <Compile Include="DetectionEventArgs.cs" />
     <Compile Include="IConflictingObserver.cs" />
     <Compile Include="IWriter.cs" />
     <Compile Include="Timestamp.cs" />

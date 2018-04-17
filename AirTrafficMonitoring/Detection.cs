@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring
 {
-    class Detection:IConflictingObserver
+    public class Detection:IConflictingObserver
     {
-        private TrackObjectificationSoftware TOS;
+        private TrackObjectificationSoftware _TOS;
+
+       public Detection(TrackObjectificationSoftware tos)
+       {
+          _TOS = tos;
+         _TOS.Attach(this);
+       }
         public void Update()
         {
-            TOS.
+           List<Track> conflictflights = _TOS.ConflictingTracks;
+           Console.WriteLine("Conflicting flights: " +conflictflights[0].Tag +", "+conflictflights[1].Tag+"\nTime: "+conflictflights[0].Timestamp.printTime());
         }
-    }
+
+         //Noget med eventet
+
+
+      }
 }

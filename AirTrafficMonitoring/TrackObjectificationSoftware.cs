@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net.Mail;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,34 +10,26 @@ using TransponderReceiver;
 
 namespace AirTrafficMonitoring
 {
-    public class TrackObjectificationSoftware
+    public class TrackObjectificationSoftware:ConflictingSubject
     {
        private static IWriter _writer;
+       private static IDetection _detection;
 
        public TrackObjectificationSoftware(ITransponderReceiver itr, IWriter writer)
        {
          itr.TransponderDataReady += Receiver_TransponderDataReady;
           _writer = writer;
+          //_detection = iDetection;
        }
 
-     
 
-      //public void readfromDLL()
-      // {
-      //    var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
-
-      //    receiver.TransponderDataReady += Receiver_TransponderDataReady;
-      // }
-
-
-
-       private static void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
+       private void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
        {
          var list = e.TransponderData;
-          
+          List<Track> Trackliste = new List<Track>();
+
          foreach (var track in list)
          {
-            List<Track> Trackliste = new List<Track>();
             string[] _track;
             _track= track.Split(';');
 
@@ -61,40 +55,62 @@ namespace AirTrafficMonitoring
             
             Trackliste.Add(t);
 
-            foreach (var _t in Trackliste)
-            {
+            
                _writer.PrintTrack(t);
-            }
+            
 
-            CompareTracks(Trackliste);
+            
          }
-       }
+          if (Trackliste.Count > 1)
+          {
+             CompareTracks(Trackliste);
+          }
+      }
 
-       public static List<Track> CompareTracks(List<Track> trackliste)
+      public List<Track> ConflictingTracks { get; set; }
+      public void CompareTracks(List<Track> trackliste)
        {
-            List<Track> conflictingTracks = new List<Track>();
+          int verticalDistance;
+          double horisontalDistance;
 
-            int verticalDistance = 0;
-            int horisontalDistance = 0;
+          foreach (var track in trackliste)
+          {
+             for (int i = 0; i < trackliste.Count; i++)
+             {
+                int X = track.XCoor;
+                int Y = track.YCoor;
+                int X2 = trackliste[i].XCoor;
+                int Y2 = trackliste[i].YCoor;
 
-            foreach (var track in trackliste)
-            {
-                track.Altitude
-            }
-            //kig på x og y for de forskellige fly og noget med pythagoras
-
-
-
-            if (horisontalDistance<5000)
-            {
-                if (verticalDistance < 300)
+                if (X != X2 || Y != Y2)
                 {
-                    //returner de to fly
+                   horisontalDistance = Math.Sqrt((Math.Pow((X2 - X), 2)) + (Math.Pow((Y2 - Y), 2)));
+
+                   if (horisontalDistance < 5000)
+                   {
+                      int alt = track.Altitude;
+                      int alt2 = trackliste[i].Altitude;
+
+                      verticalDistance = alt2 - alt;
+
+                      if (verticalDistance < 300 && verticalDistance>-300)
+                      {
+                         ConflictingTracks = new List<Track>();
+                         ConflictingTracks.Add(track);
+                         ConflictingTracks.Add(trackliste[i]);
+                         Notify();
+
+
+
+                         //måske skal vi ikke bruge observe men bare her starte eventet... er bare ikke sikker på hvordan man gør.
+                      }
+                   }
                 }
-            }
+                
 
+             }
+          }
 
-            return conflictingTracks;
        }
     }
 }

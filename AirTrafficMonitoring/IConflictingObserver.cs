@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring
 {
-    interface IConflictingObserver
+    public interface IConflictingObserver
     {
         void Update();
     }

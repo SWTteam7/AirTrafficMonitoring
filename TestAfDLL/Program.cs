@@ -14,9 +14,12 @@ namespace Application
       {
          ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
          IWriter writer = new ConsoleWriter();
+         //IDetection detection = new 
+         
+
          TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer);
-         
-         
+
+         Detection detection = new Detection(TOS);
 
          Console.ReadKey();
       }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring
 {
-    class ConflictingSubject
+    public class ConflictingSubject
     {
-        private List<IConflictingObserver> conflictlist = new List<IConflictingObserver>();
+        private static List<IConflictingObserver> conflictlist = new List<IConflictingObserver>();
         public void Attach(IConflictingObserver conflictingObserver)
         {
             conflictlist.Add(conflictingObserver);
@@ -19,7 +19,7 @@ namespace AirTrafficMonitoring
             conflictlist.Remove(conflictingObserver);
         }
 
-        public void Notify()
+        public static void Notify()
         {
             foreach(var conflict in conflictlist)
             {
