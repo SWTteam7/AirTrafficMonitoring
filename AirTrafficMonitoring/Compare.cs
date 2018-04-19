@@ -19,7 +19,6 @@ namespace AirTrafficMonitoring
          //Kigger på hvert track i listen
          foreach (var track in trackliste)
          {
-
             //Gennemgår alle de andre fly i listen for at finde konflikter
             for (int i = 0; i < trackliste.Count; i++)
             {

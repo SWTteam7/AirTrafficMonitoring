@@ -23,7 +23,7 @@ namespace AirTrafficMonitoring
           _com = com;
        }
 
-
+       
        private void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
        {
          var list = e.TransponderData;
