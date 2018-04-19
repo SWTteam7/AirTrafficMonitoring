@@ -31,20 +31,31 @@ namespace AirTrafficMonitoring
 
          foreach (var track in list)
          {
-            Convertion convertion = new Convertion();
+            Conversion convertion = new Conversion();
             Track tr = convertion.ConvertTrack(track);
 
-            //Tilføjer til liste
-            Trackliste.Add(tr);
-            //Printer Track
-            _writer.PrintTrack(tr);
+            if (tr.XCoor < 90000 && tr.XCoor > 10000)
+            {
+               if (tr.YCoor < 90000 && tr.YCoor > 10000)
+               {
+                  //Tilføjer til liste
+                  Trackliste.Add(tr);
+                  //Printer Track
+                  _writer.PrintTrack(tr);
+
+                  //Hvis der er mere end 1 track sammenligner den trackene
+                  if (Trackliste.Count > 1)
+                  {
+                     _com.CompareTracks(Trackliste);
+                  }
+               }
+
+               
+            }
+               
          }
 
-         //Hvis der er mere end 1 track sammenligner den trackene
-          if (Trackliste.Count > 1)
-          {
-             _com.CompareTracks(Trackliste);
-          }
+            
        }
     }
 }
