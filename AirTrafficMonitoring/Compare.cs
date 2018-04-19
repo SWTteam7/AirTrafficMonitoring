@@ -35,7 +35,7 @@ namespace AirTrafficMonitoring
                   //Udregner den horisontale distance
                   horisontalDistance = Math.Sqrt((Math.Pow((X2 - X), 2)) + (Math.Pow((Y2 - Y), 2)));
 
-                  if (horisontalDistance < 10000)
+                  if (horisontalDistance < 100000)
                   {
                      int alt = track.Altitude;
                      int alt2 = trackliste[i].Altitude;
