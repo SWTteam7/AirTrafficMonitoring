@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring
 {
-   public class Convertion
+   public class Conversion
    {
       public Track ConvertTrack(string tr)
       {
