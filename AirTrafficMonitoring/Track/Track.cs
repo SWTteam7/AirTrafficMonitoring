@@ -11,13 +11,11 @@ namespace AirTrafficMonitoring
       public string Tag { get; set; }
       public int XCoor { get; set; }
       public int YCoor { get; set; }
-      public int Altitude { get; set; }
-      public Timestamp Timestamp { get; set; }
+      public int Altitude { get; set; }   
+      public double Velocity { get; set; }     
+      public double Compasscourse { get; set; }
+      //public Timestamp Timestamp { get; set; }
 
-      //public void PrintData()
-      //{
-      //   string timeprint = Timestamp.printTime();
-      //   Console.WriteLine("Tag: "+Tag+"\nX-coordinate: "+XCoor+"meters\nY-coordinate: "+YCoor+"meters\nAltitude: " +Altitude+"meters\nTime stamp: "+timeprint+"\n");
-      //}
+      public DateTime Timestamp { get; set; }
    }
 }
