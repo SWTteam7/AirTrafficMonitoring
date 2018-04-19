@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Compare.cs" />
     <Compile Include="Conversion.cs" />
+    <Compile Include="Output\Logging.cs" />
     <Compile Include="Observer\ConflictingSubject.cs" />
     <Compile Include="Output\ConsoleWriter.cs" />
     <Compile Include="Observer\Detection.cs" />

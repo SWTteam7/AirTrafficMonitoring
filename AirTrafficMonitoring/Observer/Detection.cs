@@ -9,8 +9,9 @@ namespace AirTrafficMonitoring
     public class Detection:IConflictingObserver
     {
         private Compare _com;
+        Logging _log = new Logging();
 
-       public Detection(Compare com)
+        public Detection(Compare com)
        {
           _com = com;
          _com.Attach(this);
@@ -18,7 +19,9 @@ namespace AirTrafficMonitoring
         public void Update()
         {
            List<Track> conflictflights = _com.ConflictingTracks;
-           Console.WriteLine("ALARM!!!!\nConflicting flights: " +conflictflights[0].Tag +", "+conflictflights[1].Tag+"\nTime: "+conflictflights[0].Timestamp.printTime()+"\n");
+           Console.WriteLine("ALARM!!!\nConflicting flights: " + conflictflights[0].Tag + ", " + conflictflights[1].Tag + "\nTime: " + conflictflights[0].Timestamp.printTime() + "\n");
+           _log.logToFile(conflictflights);
+
         }
 
          
