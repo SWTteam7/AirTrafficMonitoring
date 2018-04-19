@@ -14,19 +14,17 @@ namespace AirTrafficMonitoring
     {
        private static IWriter _writer;
        private Compare _com;
-        private List<Track> gamleliste;
+       private List<Track> gamleliste;
        
 
        public TrackObjectificationSoftware(ITransponderReceiver itr, IWriter writer, Compare com)
        {
          itr.TransponderDataReady += Receiver_TransponderDataReady;
-          _writer = writer;
-          _com = com;
-          gamleliste = new List<Track>();
-          
+         _writer = writer;
+         _com = com;
+         gamleliste = new List<Track>();
        }
 
-        
        private void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
        {
          var list = e.TransponderData;
@@ -36,8 +34,8 @@ namespace AirTrafficMonitoring
 
           
 
-        //Convertering
-        Conversion convertion = new Conversion();
+         //Convertering
+         Conversion convertion = new Conversion();
          converteretliste = convertion.ConvertTrack(list);
 
          //Filtrering  
@@ -54,11 +52,9 @@ namespace AirTrafficMonitoring
 
             //Hvis der er mere end 1 track sammenligner den trackene
             if (færdigliste.Count > 1)
-         {
+            {
             _com.CompareTracks(færdigliste);
-         }
-
-           
+            }
        }
     }
 }

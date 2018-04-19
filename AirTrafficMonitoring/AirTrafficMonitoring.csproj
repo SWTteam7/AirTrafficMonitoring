@@ -43,9 +43,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compare.cs" />
-    <Compile Include="Conversion.cs" />
-    <Compile Include="Filtrering.cs" />
+    <Compile Include="Observer\Compare.cs" />
+    <Compile Include="Bearbejdning\Conversion.cs" />
+    <Compile Include="Bearbejdning\Filtrering.cs" />
     <Compile Include="Output\Logging.cs" />
     <Compile Include="Observer\ConflictingSubject.cs" />
     <Compile Include="Output\ConsoleWriter.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Track\Track.cs" />
     <Compile Include="TrackObjectificationSoftware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VelocityAndCourse.cs" />
+    <Compile Include="Bearbejdning\VelocityAndCourse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

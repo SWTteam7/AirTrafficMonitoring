@@ -13,6 +13,7 @@ namespace Application
       static void Main(string[] args)
       {
          ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
+         
          IWriter writer = new ConsoleWriter();
          Compare com = new Compare();
          
