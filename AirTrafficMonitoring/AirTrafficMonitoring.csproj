@@ -43,6 +43,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IConversion.cs" />
+    <Compile Include="Interfaces\IFiltrering.cs" />
+    <Compile Include="Interfaces\IVelocityAndCourse.cs" />
     <Compile Include="Observer\Compare.cs" />
     <Compile Include="Bearbejdning\Conversion.cs" />
     <Compile Include="Bearbejdning\Filtrering.cs" />

@@ -16,9 +16,12 @@ namespace Application
          
          IWriter writer = new ConsoleWriter();
          Compare com = new Compare();
+         IFiltrering filtrering = new Filtrering();
+         IConversion convertering = new Conversion();
+         IVelocityAndCourse VC= new VelocityAndCourse();
          
 
-         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer,com);
+         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer,com,convertering,filtrering,VC);
 
          Detection detection = new Detection(com);
 

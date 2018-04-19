@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitoring
 {
-    public class Filtrering
+    public class Filtrering:IFiltrering
     {
         public List<Track> Filter(List<Track> trackliste)
         {
