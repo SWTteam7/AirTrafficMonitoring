@@ -52,7 +52,6 @@
     <Compile Include="Observer\Detection.cs" />
     <Compile Include="Observer\IConflictingObserver.cs" />
     <Compile Include="Output\IWriter.cs" />
-    <Compile Include="Track\Timestamp.cs" />
     <Compile Include="Track\Track.cs" />
     <Compile Include="TrackObjectificationSoftware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

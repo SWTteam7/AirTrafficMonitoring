@@ -33,7 +33,7 @@ namespace AirTrafficMonitoring
                   //Udregner den horisontale distance
                   horisontalDistance = Math.Sqrt((Math.Pow((X2 - X), 2)) + (Math.Pow((Y2 - Y), 2)));
 
-                  if (horisontalDistance < 10000)
+                  if (horisontalDistance < 5000)
                   {
                      int alt = trackliste[i].Altitude;
                      int alt2 = trackliste[j].Altitude;
@@ -41,7 +41,7 @@ namespace AirTrafficMonitoring
                      //Udregner vertikal distance
                      verticalDistance = alt2 - alt;
 
-                     if (verticalDistance < 1000 && verticalDistance > -1000)
+                     if (verticalDistance < 300 && verticalDistance > -300)
                      {
                         //Hvis begge kriterer er opfyldt får vi tilføjet flyene til ConfligtingTrack list
                         ConflictingTracks = new List<Track>();

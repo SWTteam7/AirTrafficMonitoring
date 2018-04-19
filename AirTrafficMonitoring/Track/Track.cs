@@ -14,7 +14,7 @@ namespace AirTrafficMonitoring
       public int Altitude { get; set; }   
       public int Velocity { get; set; }     
       public int Compasscourse { get; set; }
-      //public Timestamp Timestamp { get; set; }
+      
 
       public DateTime Timestamp { get; set; }
    }
