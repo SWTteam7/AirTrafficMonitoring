@@ -18,7 +18,10 @@ namespace AirTrafficMonitoring
         public void Update()
         {
            List<Track> conflictflights = _com.ConflictingTracks;
-           Console.WriteLine("ALARM!!!!\nConflicting flights: " +conflictflights[0].Tag +", "+conflictflights[1].Tag+"\nTime: "+conflictflights[0].Timestamp.printTime()+"\n");
+           Console.WriteLine("ALARM!!!!\nConflicting flights: " +conflictflights[0].Tag +", "+conflictflights[1].Tag+ "\nTime stamp: " +
+                             conflictflights[1].Timestamp.Year + "/" + conflictflights[1].Timestamp.Month + "/" + conflictflights[1].Timestamp.Day +
+                             ", at " + conflictflights[1].Timestamp.Hour + ":" + conflictflights[1].Timestamp.Minute + ":" +
+                             conflictflights[1].Timestamp.Second + " and " + conflictflights[1].Timestamp.Millisecond + " milliseconds");
         }
 
          

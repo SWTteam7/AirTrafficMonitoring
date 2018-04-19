@@ -12,8 +12,10 @@ namespace AirTrafficMonitoring
       public int XCoor { get; set; }
       public int YCoor { get; set; }
       public int Altitude { get; set; }   
-      public int Volocity { get; set; }     
-      public int compasscourse { get; set; }
-      public Timestamp Timestamp { get; set; }
+      public double Velocity { get; set; }     
+      public double Compasscourse { get; set; }
+      //public Timestamp Timestamp { get; set; }
+
+      public DateTime Timestamp { get; set; }
    }
 }
