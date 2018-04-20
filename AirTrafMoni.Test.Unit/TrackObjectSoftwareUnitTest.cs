@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,10 @@ namespace AirTrafMoni.Test.Unit
       private ITransponderReceiver TransponderReciever;
       private IWriter writer;
       private Compare Compare;
+      private IConversion convert;
+      private IFiltrering filter;
+      private IVelocityAndCourse velo;
+
 
       [SetUp]
       public void SetUp()
@@ -25,7 +30,7 @@ namespace AirTrafMoni.Test.Unit
          writer = Substitute.For<IWriter>();
          TransponderReciever= Substitute.For<ITransponderReceiver>();
          Compare = Substitute.For<Compare>();
-         _uut = new TrackObjectificationSoftware(TransponderReciever,writer,Compare);
+         _uut = new TrackObjectificationSoftware(TransponderReciever,writer,Compare,convert,filter, velo);
 
          var track = "ATR423;11111;22222;33333;20180409095330123";
          var trackliste = new List<string>();
@@ -35,8 +40,9 @@ namespace AirTrafMoni.Test.Unit
 
          TransponderReciever.TransponderDataReady += Raise.EventWith(eventArgs);
       }
+     
 
-      [Test]
+        [Test]
       public void Transponder_reciever_TagCorrect()
       {
          writer.Received().PrintTrack(Arg.Is<Track>(tra => tra.Tag.Contains("ATR423")));

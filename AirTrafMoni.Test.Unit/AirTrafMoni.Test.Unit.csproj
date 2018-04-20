@@ -59,6 +59,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConversionUnitTest.cs" />
+    <Compile Include="FiltreringUnitTest.cs" />
     <Compile Include="TrackObjectSoftwareUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
