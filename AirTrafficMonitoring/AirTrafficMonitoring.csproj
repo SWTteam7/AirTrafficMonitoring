@@ -43,6 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ILogging.cs" />
     <Compile Include="Interfaces\IConversion.cs" />
     <Compile Include="Interfaces\IFiltrering.cs" />
     <Compile Include="Interfaces\IVelocityAndCourse.cs" />

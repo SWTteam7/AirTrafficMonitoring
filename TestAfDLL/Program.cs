@@ -19,11 +19,11 @@ namespace Application
          IFiltrering filtrering = new Filtrering();
          IConversion convertering = new Conversion();
          IVelocityAndCourse VC= new VelocityAndCourse();
-         
+         ILogging log = new Logging();
 
          TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer,com,convertering,filtrering,VC);
 
-         Detection detection = new Detection(com);
+         Detection detection = new Detection(com, log);
 
          Console.ReadKey();
       }
