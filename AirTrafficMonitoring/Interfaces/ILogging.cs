@@ -8,6 +8,6 @@ namespace AirTrafficMonitoring
 {
    public interface ILogging
    {
-      void logToFile(string meddelelse);
+      void logToFile(List<Track> meddelelse);
    }
 }

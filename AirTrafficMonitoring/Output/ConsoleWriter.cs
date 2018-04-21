@@ -29,5 +29,14 @@ namespace AirTrafficMonitoring
             }
          }
       }
+
+      public void PrintConflictingTracks(List<Track> conflictflights)
+      {
+         Console.WriteLine("ALARM!!!!\nConflicting flights: " + conflictflights[0].Tag + ", " + conflictflights[1].Tag + "\nTime stamp: " +
+                         conflictflights[0].Timestamp.Year + "/" + conflictflights[0].Timestamp.Month + "/" + conflictflights[0].Timestamp.Day +
+                         ", at " + conflictflights[0].Timestamp.Hour + ":" + conflictflights[0].Timestamp.Minute + ":" +
+                         conflictflights[0].Timestamp.Second + " and " + conflictflights[0].Timestamp.Millisecond + " milliseconds\n");
+      }
+
    }
 }

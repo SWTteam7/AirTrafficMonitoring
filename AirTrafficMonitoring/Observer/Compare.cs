@@ -8,11 +8,14 @@ namespace AirTrafficMonitoring
 {
    public class Compare:ConflictingSubject
    {
+      public Compare() {ConflictingTracks = new List<Track>(); }
+
       public List<Track> ConflictingTracks { get; set; }
       public void CompareTracks(List<Track> trackliste)
       {
          int verticalDistance;
          double horisontalDistance;
+         //ConflictingTracks = new List<Track>();
 
          //Kigger på hvert track i listen
          for (int i=0; i<trackliste.Count;i++)
@@ -26,14 +29,12 @@ namespace AirTrafficMonitoring
                int X2 = trackliste[j].XCoor;
                int Y2 = trackliste[j].YCoor;
 
-               //Tjekker at det ikke er det samme track
-               if (X != X2 || Y != Y2)
-               {
+               
 
                   //Udregner den horisontale distance
                   horisontalDistance = Math.Sqrt((Math.Pow((X2 - X), 2)) + (Math.Pow((Y2 - Y), 2)));
 
-                  if (horisontalDistance < 200000)
+                  if (horisontalDistance <=5000)
                   {
                      int alt = trackliste[i].Altitude;
                      int alt2 = trackliste[j].Altitude;
@@ -41,16 +42,16 @@ namespace AirTrafficMonitoring
                      //Udregner vertikal distance
                      verticalDistance = alt2 - alt;
 
-                     if (verticalDistance < 100000 && verticalDistance > -100000)
+                     if (verticalDistance <= 300 && verticalDistance >= -300)
                      {
                         //Hvis begge kriterer er opfyldt får vi tilføjet flyene til ConfligtingTrack list
-                        ConflictingTracks = new List<Track>();
+                        
                         ConflictingTracks.Add(trackliste[i]);
                         ConflictingTracks.Add(trackliste[j]);
                         Notify();
                      }
                   }
-               }
+               
             }
          }
 

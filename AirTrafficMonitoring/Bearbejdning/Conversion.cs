@@ -9,6 +9,10 @@ namespace AirTrafficMonitoring
 {
    public class Conversion:IConversion
    {
+      public Conversion()
+      {
+         
+      }
       public List<Track> ConvertTrack(List<string> trackliste)
       {
             List<Track> converteret = new List<Track>();
@@ -31,16 +35,6 @@ namespace AirTrafficMonitoring
               t.Velocity = 0;
               t.Compasscourse = 0;
 
-              //Timestamp timestamp = new Timestamp();
-              //timestamp.Year = time.Substring(0, 4);
-              //timestamp.Month = time.Substring(4, 2);
-              //timestamp.Day = time.Substring(6, 2);
-              //timestamp.Hour = time.Substring(8, 2);
-              //timestamp.Minute = time.Substring(10, 2);
-              //timestamp.Second = time.Substring(12, 2);
-              //timestamp.Milisecond = time.Substring(14, 3);
-
-              //t.Timestamp = timestamp;
 
               //Tilføjer til liste
               converteret.Add(t);

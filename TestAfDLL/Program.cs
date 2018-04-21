@@ -23,7 +23,7 @@ namespace Application
 
          TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer,com,convertering,filtrering,VC);
 
-         Detection detection = new Detection(com, log);
+         Detection detection = new Detection(com, log, writer);
 
          Console.ReadKey();
       }

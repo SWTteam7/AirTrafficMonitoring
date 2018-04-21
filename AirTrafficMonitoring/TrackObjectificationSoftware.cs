@@ -32,7 +32,8 @@ namespace AirTrafficMonitoring
           _VC = velo;
        }
 
-       private void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
+
+      private void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
        {
          var list = e.TransponderData;
            List<Track> converteretliste= new List<Track>();

@@ -59,10 +59,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareUnitTest.cs" />
     <Compile Include="ConversionUnitTest.cs" />
+    <Compile Include="DetectionUnitTest.cs" />
     <Compile Include="FiltreringUnitTest.cs" />
     <Compile Include="TrackObjectSoftwareUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VelocityAndCourseUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

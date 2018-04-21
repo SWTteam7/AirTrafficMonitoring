@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 namespace AirTrafficMonitoring
 {
    public class VelocityAndCourse:IVelocityAndCourse
-
    {
    private int velocity;
    private int course;
+
+      public VelocityAndCourse()
+      {
+         
+      }
 
 
    public List<Track> CalculateVelocityAndCourse(List<Track> gammelliste, List<Track>nyliste)
@@ -26,8 +30,9 @@ namespace AirTrafficMonitoring
             if (track.Tag == gammelliste[i].Tag)
             {
 
+               //Velocity
                double horisontaldistance =
-                  Math.Sqrt((Math.Pow((track.XCoor - gammelliste[i].XCoor), 2)) +
+               Math.Sqrt((Math.Pow((track.XCoor - gammelliste[i].XCoor), 2)) +
                             (Math.Pow((track.YCoor - gammelliste[i].YCoor), 2)));
                TimeSpan tidsforskel = track.Timestamp - gammelliste[i].Timestamp;
                double tidMellemTracks = tidsforskel.TotalSeconds;
@@ -35,6 +40,8 @@ namespace AirTrafficMonitoring
 
                track.Velocity = velocity;
 
+
+               //Course
                double BX = gammelliste[i].XCoor;
                double BY = 90000;
                double a = 90000 - gammelliste[i].YCoor;

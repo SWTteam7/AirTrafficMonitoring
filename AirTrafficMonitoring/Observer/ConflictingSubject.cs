@@ -8,7 +8,8 @@ namespace AirTrafficMonitoring
 {
     public class ConflictingSubject
     {
-        private static List<IConflictingObserver> conflictlist = new List<IConflictingObserver>();
+        private List<IConflictingObserver> conflictlist = new List<IConflictingObserver>();
+
         public void Attach(IConflictingObserver conflictingObserver)
         {
             conflictlist.Add(conflictingObserver);
@@ -19,12 +20,13 @@ namespace AirTrafficMonitoring
             conflictlist.Remove(conflictingObserver);
         }
 
-        public static void Notify()
+        public void Notify()
         {
             foreach (var conflict in conflictlist)
             {
                 conflict.Update();
             }
         }
+
     }
 }

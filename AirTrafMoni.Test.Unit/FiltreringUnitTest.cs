@@ -10,32 +10,41 @@ using TransponderReceiver;
 
 namespace AirTrafMoni.Test.Unit
 {
+   [TestFixture]
    public class FiltreringUnitTest
    {
        private IFiltrering _uut;
-       private TrackObjectificationSoftware _track;
-      // private ITransponderReceiver TransponderReciever;
-
-        [SetUp]
+      
+       [SetUp]
        public void Setup()
        {
            _uut = new Filtrering();
-           _track = Substitute.For<TrackObjectificationSoftware>();
-          // TransponderReciever = Substitute.For<ITransponderReceiver>();
-          
-           //var trackliste = new List<string>();
-           //trackliste.Add(_track);
-            
+       }
+
+       [TestCase(9999,9999,0)]
+       [TestCase(10000, 10000, 1)]
+       [TestCase(9999,10000,0)]
+       [TestCase(10000, 9999, 0)]
+       [TestCase(90001, 90001, 0)]
+       [TestCase(90000, 90000, 1)]
+       [TestCase(90001, 90000, 0)]
+       [TestCase(90000, 90001, 0)]
+      public void SetsState_FlightStateAsExcepted_FilteredCorrect(int x, int y, int count)
+        {
+          Track t = new Track();
+          t.XCoor = x;
+          t.YCoor = y;
+
+         List<Track> trackliste = new List<Track>();
+         trackliste.Add(t);
+          List<Track> filterliste = _uut.Filter(trackliste);
+
+         Assert.That(filterliste.Count, Is.EqualTo(count));
+
         }
 
-       [TestCase(9999,9999,false)]
-       [TestCase(10000, 10000, true)]
-       [TestCase(10001,10001,true)]
-        public void SetsState_FlightStateAsExcepted_FilteredCorrect(int x, int y, bool expectedState)
-       {
-         Track t = new Track() {XCoor = x, YCoor = y};
-         Assert.That(_uut.Filter(t), Is.EqualTo(expectedState));
-       }
+      
+
 
    }
 }
