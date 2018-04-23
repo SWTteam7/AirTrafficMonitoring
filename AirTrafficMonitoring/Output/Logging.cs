@@ -13,7 +13,7 @@ namespace AirTrafficMonitoring
       {
            FileStream output = new FileStream("logfile.txt", FileMode.Append, FileAccess.Write);
            StreamWriter fileWriter = new StreamWriter(output);
-           fileWriter.WriteLine("ALARM!!!!\nConflicting flights: " + conflictflights[0].Tag + ", " + conflictflights[1].Tag + "\nTime stamp: " +
+           fileWriter.WriteLine("ALARM!!!! Conflicting flights: " + conflictflights[0].Tag + ", " + conflictflights[1].Tag + " Time stamp: " +
                                 conflictflights[0].Timestamp.Year + "/" + conflictflights[0].Timestamp.Month + "/" + conflictflights[0].Timestamp.Day +
                                 ", at " + conflictflights[0].Timestamp.Hour + ":" + conflictflights[0].Timestamp.Minute + ":" +
                                 conflictflights[0].Timestamp.Second + " and " + conflictflights[0].Timestamp.Millisecond + " milliseconds\n");

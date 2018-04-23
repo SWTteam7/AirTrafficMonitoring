@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafMoni.Test.Unit", "Ai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "TestAfDLL\Application.csproj", "{609378CC-1F1D-466F-B18A-8CB1CB1C0E4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafMoni.Test.Integr", "AirTrafMoni.Test.Integr\AirTrafMoni.Test.Integr.csproj", "{B1F81B4F-9CEA-4F2C-B52C-9130888CCE9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{609378CC-1F1D-466F-B18A-8CB1CB1C0E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{609378CC-1F1D-466F-B18A-8CB1CB1C0E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{609378CC-1F1D-466F-B18A-8CB1CB1C0E4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1F81B4F-9CEA-4F2C-B52C-9130888CCE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1F81B4F-9CEA-4F2C-B52C-9130888CCE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1F81B4F-9CEA-4F2C-B52C-9130888CCE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1F81B4F-9CEA-4F2C-B52C-9130888CCE9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

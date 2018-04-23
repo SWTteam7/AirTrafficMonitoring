@@ -8,13 +8,21 @@ namespace AirTrafficMonitoring
 {
     public class Filtrering:IFiltrering
     {
-       public Filtrering()
+       private IVelocityAndCourse _velo;
+       private List<Track> gammelliste;
+       public List<Track> Filtreretliste { get; set; }
+      
+       public Filtrering() { }
+
+       public Filtrering(IVelocityAndCourse velo)
        {
-          
-       }
-        public List<Track> Filter(List<Track> trackliste)
+          _velo = velo;
+         gammelliste = new List<Track>();
+         
+      }
+        public void Filter(List<Track> trackliste)
         {
-            List<Track> filtreretliste = new List<Track>();
+            Filtreretliste = new List<Track>();
 
             foreach (var tr in trackliste)
             {
@@ -22,11 +30,12 @@ namespace AirTrafficMonitoring
                 {
                     if (tr.YCoor <= 90000 && tr.YCoor >= 10000)
                     {
-                        filtreretliste.Add(tr);
+                        Filtreretliste.Add(tr);
                     }
                 }
             }
-            return filtreretliste;
+
+            gammelliste = _velo.CalculateVelocityAndCourse(gammelliste,Filtreretliste);
         }
     }
 }

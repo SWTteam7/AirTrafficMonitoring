@@ -49,12 +49,13 @@ namespace AirTrafficMonitoring
                         ConflictingTracks.Add(trackliste[i]);
                         ConflictingTracks.Add(trackliste[j]);
                         Notify();
+                        
                      }
                   }
                
             }
          }
-
+         //ConflictingTracks.Clear();
       }
    }
 }

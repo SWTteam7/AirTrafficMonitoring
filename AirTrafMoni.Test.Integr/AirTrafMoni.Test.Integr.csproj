@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CAA23906-E1ED-4DD2-83DC-C229FD806450}</ProjectGuid>
+    <ProjectGuid>{B1F81B4F-9CEA-4F2C-B52C-9130888CCE9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AirTrafMoni.Test.Unit</RootNamespace>
-    <AssemblyName>AirTrafMoni.Test.Unit</AssemblyName>
+    <RootNamespace>AirTrafMoni.Test.Integr</RootNamespace>
+    <AssemblyName>AirTrafMoni.Test.Integr</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -59,22 +59,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompareUnitTest.cs" />
-    <Compile Include="ConversionUnitTest.cs" />
-    <Compile Include="DetectionUnitTest.cs" />
-    <Compile Include="FiltreringUnitTest.cs" />
-    <Compile Include="LoggingUnitTest.cs" />
+    <Compile Include="IT1_Detection_Logger.cs" />
+    <Compile Include="IT2_Compare_Detection.cs" />
+    <Compile Include="IT3_Velo_Compare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VelocityAndCourseUnitTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirTrafficMonitoring\AirTrafficMonitoring.csproj">
       <Project>{91b5d806-1a04-4a23-9dab-3b9585f49c6c}</Project>
       <Name>AirTrafficMonitoring</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

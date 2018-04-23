@@ -8,6 +8,8 @@ namespace AirTrafficMonitoring
 {
    public interface IFiltrering
    {
-      List<Track> Filter(List<Track> trackliste);
+      void Filter(List<Track> trackliste);
+
+      List<Track> Filtreretliste { get; set; }
    }
 }

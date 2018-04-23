@@ -14,11 +14,13 @@ namespace AirTrafMoni.Test.Unit
    public class FiltreringUnitTest
    {
        private IFiltrering _uut;
+      private IVelocityAndCourse velo;
       
        [SetUp]
        public void Setup()
        {
-           _uut = new Filtrering();
+          velo = Substitute.For<IVelocityAndCourse>();
+           _uut = new Filtrering(velo);
        }
 
        [TestCase(9999,9999,0)]
@@ -30,21 +32,19 @@ namespace AirTrafMoni.Test.Unit
        [TestCase(90001, 90000, 0)]
        [TestCase(90000, 90001, 0)]
       public void SetsState_FlightStateAsExcepted_FilteredCorrect(int x, int y, int count)
-        {
+      {
           Track t = new Track();
           t.XCoor = x;
           t.YCoor = y;
 
-         List<Track> trackliste = new List<Track>();
-         trackliste.Add(t);
-          List<Track> filterliste = _uut.Filter(trackliste);
+          List<Track> trackliste = new List<Track>();
+          trackliste.Add(t);
+          _uut.Filter(trackliste);
+          
 
-         Assert.That(filterliste.Count, Is.EqualTo(count));
+          Assert.That(_uut.Filtreretliste.Count, Is.EqualTo(count));
 
-        }
-
-      
-
+      }
 
    }
 }

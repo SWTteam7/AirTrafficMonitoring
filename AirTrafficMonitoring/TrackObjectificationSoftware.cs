@@ -18,6 +18,7 @@ namespace AirTrafficMonitoring
        private IConversion _convertion;
        private IFiltrering _filtrering;
        private IVelocityAndCourse _VC;
+       
 
 
        public TrackObjectificationSoftware(ITransponderReceiver itr, IWriter writer, Compare com, IConversion convert,
@@ -30,22 +31,21 @@ namespace AirTrafficMonitoring
           _convertion = convert;
           _filtrering = filter;
           _VC = velo;
-       }
+      }
 
 
       private void Receiver_TransponderDataReady(object sender, RawTransponderDataEventArgs e)
        {
          var list = e.TransponderData;
-           List<Track> converteretliste= new List<Track>();
-           List<Track> filtreretliste = new List<Track>();
-           List<Track> færdigliste = new List<Track>();
+         List<Track> converteretliste = new List<Track>();
+         List<Track> filtreretliste = new List<Track>();
+         List<Track> færdigliste = new List<Track>();
 
          //Convertering
-         
          converteretliste = _convertion.ConvertTrack(list);
 
          //Filtrering  
-         filtreretliste = _filtrering.Filter(converteretliste);
+         //filtreretliste = _filtrering.Filter(converteretliste);
 
          //Velocity of course
          færdigliste = _VC.CalculateVelocityAndCourse(gamleliste, filtreretliste);
@@ -60,6 +60,10 @@ namespace AirTrafficMonitoring
             {
             _com.CompareTracks(færdigliste);
             }
+
+          converteretliste.Clear();
+          filtreretliste.Clear();
+          færdigliste.Clear();
        }
     }
 }

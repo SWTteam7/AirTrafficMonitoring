@@ -13,16 +13,13 @@ namespace Application
       static void Main(string[] args)
       {
          ITransponderReceiver itr =TransponderReceiverFactory.CreateTransponderDataReceiver();
-         
+
+         ILogging log = new Logging();
          IWriter writer = new ConsoleWriter();
          Compare com = new Compare();
-         IFiltrering filtrering = new Filtrering();
-         IConversion convertering = new Conversion();
-         IVelocityAndCourse VC= new VelocityAndCourse();
-         ILogging log = new Logging();
-
-         TrackObjectificationSoftware TOS = new TrackObjectificationSoftware(itr,writer,com,convertering,filtrering,VC);
-
+         IVelocityAndCourse VC = new VelocityAndCourse(com,writer);
+         IFiltrering filtrering = new Filtrering(VC);
+         IConversion convertering = new Conversion(itr,filtrering);
          Detection detection = new Detection(com, log, writer);
 
          Console.ReadKey();

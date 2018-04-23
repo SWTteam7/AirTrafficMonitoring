@@ -10,10 +10,15 @@ namespace AirTrafficMonitoring
    {
    private int velocity;
    private int course;
+      private Compare _compare;
+      private IWriter _writer;
 
-      public VelocityAndCourse()
+      public VelocityAndCourse() { }
+
+      public VelocityAndCourse(Compare compare, IWriter writer)
       {
-         
+         _compare = compare;
+         _writer = writer;
       }
 
 
@@ -36,8 +41,9 @@ namespace AirTrafficMonitoring
                             (Math.Pow((track.YCoor - gammelliste[i].YCoor), 2)));
                TimeSpan tidsforskel = track.Timestamp - gammelliste[i].Timestamp;
                double tidMellemTracks = tidsforskel.TotalSeconds;
+                  
                velocity = Convert.ToInt32(horisontaldistance / tidMellemTracks);
-
+               
                track.Velocity = velocity;
 
 
@@ -52,19 +58,31 @@ namespace AirTrafficMonitoring
                                                2 * a * horisontaldistance));
                int course = Convert.ToInt32((courserad * 180) / Math.PI);
 
-               track.Compasscourse = course;
+               if (track.XCoor < gammelliste[i].XCoor)
+               {
+                  track.Compasscourse = 360 - course;
+               }
+               else track.Compasscourse = course;
             }
          }
          VelocityAndCourseListe.Add(track);
 
       }
 
+      //Printer Track
+      _writer.PrintTrack(VelocityAndCourseListe);
+
+
+      //Hvis der er mere end 1 track sammenligner den trackene
+      if (VelocityAndCourseListe.Count > 1)
+      {
+         _compare.CompareTracks(VelocityAndCourseListe);
+      }
+
       return VelocityAndCourseListe;
 
    }
 
-
-   //sammenligne x og y koordinat og sammenligne timestamp med hinanden for at regne farten ud. 
 
    }
 }
