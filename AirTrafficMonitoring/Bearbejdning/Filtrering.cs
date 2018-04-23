@@ -10,6 +10,7 @@ namespace AirTrafficMonitoring
     {
        private IVelocityAndCourse _velo;
        private List<Track> gammelliste;
+        private List<Track> veloliste;
        public List<Track> Filtreretliste { get; set; }
       
        public Filtrering() { }
@@ -19,9 +20,11 @@ namespace AirTrafficMonitoring
           _velo = velo;
          gammelliste = new List<Track>();
          
-      }
+
+        }
         public void Filter(List<Track> trackliste)
         {
+            
             Filtreretliste = new List<Track>();
 
             foreach (var tr in trackliste)
@@ -35,7 +38,10 @@ namespace AirTrafficMonitoring
                 }
             }
 
-            gammelliste = _velo.CalculateVelocityAndCourse(gammelliste,Filtreretliste);
+            veloliste = new List<Track>();
+            veloliste = _velo.CalculateVelocityAndCourse(gammelliste,Filtreretliste);
+
+            gammelliste = veloliste;
         }
     }
 }

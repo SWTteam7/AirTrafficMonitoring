@@ -62,6 +62,7 @@
     <Compile Include="IT1_Detection_Logger.cs" />
     <Compile Include="IT2_Compare_Detection.cs" />
     <Compile Include="IT3_Velo_Compare.cs" />
+    <Compile Include="IT4_Filtrering_Velo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

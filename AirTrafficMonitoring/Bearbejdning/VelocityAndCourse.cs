@@ -12,6 +12,7 @@ namespace AirTrafficMonitoring
    private int course;
       private Compare _compare;
       private IWriter _writer;
+       public List<Track> VelocityAndCourseListe { get; set; }
 
       public VelocityAndCourse() { }
 
@@ -24,7 +25,7 @@ namespace AirTrafficMonitoring
 
    public List<Track> CalculateVelocityAndCourse(List<Track> gammelliste, List<Track>nyliste)
    {
-      List<Track> VelocityAndCourseListe = new List<Track>();
+      VelocityAndCourseListe = new List<Track>();
 
 
       foreach (var track in nyliste)

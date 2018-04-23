@@ -9,5 +9,6 @@ namespace AirTrafficMonitoring
    public interface IVelocityAndCourse
    {
       List<Track> CalculateVelocityAndCourse(List<Track> gammelliste, List<Track> nyliste);
-   }
+        List<Track> VelocityAndCourseListe { get; set; }
+    }
 }
