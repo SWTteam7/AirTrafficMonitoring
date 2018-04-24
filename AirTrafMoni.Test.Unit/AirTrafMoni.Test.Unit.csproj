@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompareUnitTest.cs" />
-    <Compile Include="ConflictingSubUnitTest.cs" />
     <Compile Include="ConversionUnitTest.cs" />
     <Compile Include="DetectionUnitTest.cs" />
     <Compile Include="FiltreringUnitTest.cs" />

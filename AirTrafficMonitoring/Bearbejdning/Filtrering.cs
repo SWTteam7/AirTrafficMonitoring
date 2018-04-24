@@ -33,7 +33,10 @@ namespace AirTrafficMonitoring
                 {
                     if (tr.YCoor <= 90000 && tr.YCoor >= 10000)
                     {
-                        Filtreretliste.Add(tr);
+                       if (tr.Altitude > 500 && tr.Altitude < 20000)
+                       {
+                          Filtreretliste.Add(tr);
+                       }
                     }
                 }
             }
