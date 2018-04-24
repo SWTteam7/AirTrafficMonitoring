@@ -26,6 +26,7 @@ namespace AirTrafMoni.Test.Integr
          logger = new Logging();
          compare = Substitute.For<Compare>();
          _uut = new Detection(compare, logger, writer);
+         File.WriteAllText("logfile.txt", string.Empty);
       }
 
       [Test]
@@ -50,11 +51,11 @@ namespace AirTrafMoni.Test.Integr
 
          var fileText = File.ReadAllLines("logfile.txt");
 
-         var fil = fileText[0] + fileText[1] + fileText[2];
+         var fil = fileText[0];
 
          Assert.That(fil,
             Is.EqualTo(
-               "ALARM!!!!Conflicting flights: ABC, DEFTime stamp: 2017/4/23, at 12:18:30 and 123 milliseconds"));
+               "ALARM!!!! Conflicting flights: ABC, DEF Time stamp: 2017/4/23, at 12:18:30 and 123 milliseconds"));
       }
    }
 }

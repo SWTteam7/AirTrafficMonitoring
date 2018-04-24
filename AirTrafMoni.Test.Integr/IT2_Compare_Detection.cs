@@ -23,7 +23,7 @@ namespace AirTrafMoni.Test.Integr
       [SetUp]
       public void SetUp()
       {
-         log = Substitute.For<ILogging>();
+         log = new Logging();
          writer = Substitute.For<IWriter>();
          _uut = new Compare();
          detection = new Detection(_uut,log,writer);
@@ -46,9 +46,11 @@ namespace AirTrafMoni.Test.Integr
          liste = new List<Track>();
          liste.Add(t1);
          liste.Add(t2);
+
+         File.WriteAllText("logfile.txt", string.Empty);
       }
 
-      //[Test]
+      [Test]
       public void CompareTracks_NOTConflicting_LogtoFil()
       {
          Track t1 = new Track();
@@ -74,13 +76,13 @@ namespace AirTrafMoni.Test.Integr
 
          var fileText = File.ReadAllLines("logfile.txt");
 
-         var fil = fileText[0] + fileText[1] + fileText[2];
+        
 
-         Assert.That(fil, Is.Empty);
+         Assert.That(fileText.Length, Is.EqualTo(0));
 
       }
 
-      //[Test]
+      [Test]
       public void CompareTracks_Conflicting_LogtoFil()
       {
          Track t1 = new Track();
@@ -106,9 +108,9 @@ namespace AirTrafMoni.Test.Integr
 
          var fileText = File.ReadAllLines("logfile.txt");
 
-         var fil = fileText[0] + fileText[1] + fileText[2];
+         var fil = fileText[0];
 
-         Assert.That(fil,Is.EqualTo("ALARM!!!!Conflicting flights: ABC, DEFTime stamp: 2017/4/23, at 12:18:30 and 123 milliseconds"));
+         Assert.That(fil,Is.EqualTo("ALARM!!!! Conflicting flights: ABC, DEF Time stamp: 2017/4/23, at 12:18:30 and 123 milliseconds"));
          
       }
 

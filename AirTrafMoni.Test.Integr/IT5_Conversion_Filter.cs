@@ -46,6 +46,12 @@ namespace AirTrafMoni.Test.Integr
             Assert.That(filter.Filtreretliste.Count,Is.EqualTo(1));
         }
 
+       [Test]
+       public void ConvertTrack_Tjek_Tag()
+       {
+          Assert.That(filter.Filtreretliste[0].Tag, Is.EqualTo("ATR423"));
+       }
+
 
     }
 }
