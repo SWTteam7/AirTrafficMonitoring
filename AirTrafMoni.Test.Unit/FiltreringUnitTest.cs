@@ -36,6 +36,7 @@ namespace AirTrafMoni.Test.Unit
           Track t = new Track();
           t.XCoor = x;
           t.YCoor = y;
+         t.Altitude = 5000;
 
           List<Track> trackliste = new List<Track>();
           trackliste.Add(t);

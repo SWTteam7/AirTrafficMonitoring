@@ -30,7 +30,7 @@ namespace AirTrafMoni.Test.Integr
             itr = Substitute.For<ITransponderReceiver>();
             _uut = new Conversion(itr,filter);
 
-            string t1 = "ATR423;11111;22222;33333;20180409095330123";
+            string t1 = "ATR423;11111;22222;5000;20180409095330123";
             List<string> trackliste = new List<string>();
             trackliste.Add(t1);
 
